@@ -15,7 +15,7 @@ const JobSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// ⚡ TUNED COMPOUND COMPILATION MAP
+
 JobSchema.index({ user: 1 });
 
 module.exports = mongoose.model("jobs", JobSchema);

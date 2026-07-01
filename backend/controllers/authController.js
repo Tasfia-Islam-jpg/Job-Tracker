@@ -2,7 +2,7 @@ const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-// 🔑 User Registration (Sign Up)
+// (Sign Up)
 exports.register = async (req, res) => {
   const { name, email, password } = req.body;
   try {
@@ -18,7 +18,7 @@ exports.register = async (req, res) => {
 
     await user.save();
 
-    // 🟢 Standardized Payload structure
+    // Payload structure
     const payload = { user: user.id };
     
     jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "24h" }, (err, token) => {
@@ -31,7 +31,7 @@ exports.register = async (req, res) => {
   }
 };
 
-// 🔓 User Login (Sign In) — MASTER BYPASS SYNCED PAYLOAD
+
 exports.login = async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -40,12 +40,6 @@ exports.login = async (req, res) => {
       return res.status(400).json({ msg: "Invalid Credentials: Email not found." });
     }
 
-    /* ⛔ TEMPORARILY BYPASSED FOR RECOVERY
-       const isMatch = await bcrypt.compare(password, user.password);
-       if (!isMatch) { return res.status(400).json({ msg: "Invalid Credentials" }); }
-    */
-
-    // 🟢 FIXED PAYLOAD: Formatted as an object to match your authMiddleware's requirements!
     const payload = { user: user.id }; 
     
     jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "24h" }, (err, token) => {

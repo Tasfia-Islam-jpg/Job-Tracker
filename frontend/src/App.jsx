@@ -155,7 +155,6 @@ function App() {
 
   return (
     <div style={{ fontFamily: 'system-ui, sans-serif', minHeight: '100vh', background: '#fcfcfc', margin: 0 }}>
-      {/* 🚀 Render Modular Navigation Component */}
       <Navbar 
         isLoggedIn={isLoggedIn} 
         view={view} 
@@ -174,7 +173,6 @@ function App() {
 
       <div style={{ maxWidth: '950px', margin: '0 auto', padding: '40px 20px' }}>
         {isLoggedIn ? (
-          /* 🚀 Render Modular Dashboard Component */
           <Dashboard
             totalApps={totalApps}
             countByStatus={countByStatus}
@@ -195,7 +193,6 @@ function App() {
             deleteCard={deleteCard}
           />
         ) : (
-          /* 🔒 Auth Interface Stays Anchored inside App Layout Container */
           <div style={{ maxWidth: '420px', margin: '40px auto 0 auto' }}>
             <div style={{ background: '#fff', padding: '30px', borderRadius: '12px', boxShadow: '0 4px 20px rgba(0,0,0,0.06)', border: '1px solid #eee' }}>
               <h3 style={{ textAlign: 'center', margin: '0 0 20px 0', color: '#2c3e50' }}>{view === 'login' ? 'Sign In to Your Workspace' : 'Create Your Free Account'}</h3>

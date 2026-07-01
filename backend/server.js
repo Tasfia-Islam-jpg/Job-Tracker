@@ -11,7 +11,6 @@ const app = express();
 
 app.use(cors());
 
-// Limit sizing constraints cleanly
 app.use(express.json({ limit: "20mb" }));
 app.use(express.urlencoded({ limit: "20mb", extended: true }));
 
@@ -32,19 +31,19 @@ const MONGO_URI = process.env.MONGO_URI;
 
 const dbOptions = {
   autoIndex: true,                
-  serverSelectionTimeoutMS: 5000, // Drop inactive network pipes instantly within 5 seconds
+  serverSelectionTimeoutMS: 5000, 
   socketTimeoutMS: 45000,         
-  family: 4                       // Force IPv4 address matching rules
+  family: 4                       
 };
 
 mongoose
   .connect(MONGO_URI, dbOptions)
   .then(() => {
-    console.log("🚀 SUCCESS: Connected to MongoDB Atlas cluster!");
+    console.log(" SUCCESS: Connected to MongoDB Atlas cluster!");
     app.listen(PORT, () => {
-      console.log(`📡 Server listening smoothly on http://localhost:${PORT}`);
+      console.log(`Server listening smoothly on http://localhost:${PORT}`);
     });
   })
   .catch((err) => {
-    console.error("❌ DATABASE CONNECTION ERROR:", err.message);
+    console.error(" DATABASE CONNECTION ERROR:", err.message);
   });

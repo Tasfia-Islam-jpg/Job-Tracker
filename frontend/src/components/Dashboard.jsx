@@ -21,7 +21,6 @@ const Dashboard = ({
 }) => {
   return (
     <div>
-      {/* 📊 Metrics Grid Block */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '15px', marginBottom: '30px' }}>
         <div style={{ background: '#fff', padding: '15px', borderRadius: '8px', textAlign: 'center', border: '1px solid #eee' }}><h3>{totalApps}</h3><small>Total Apps</small></div>
         <div style={{ background: '#dfebf6', padding: '15px', borderRadius: '8px', textAlign: 'center' }}><h3>{countByStatus('Applied')}</h3><small>Applied</small></div>
@@ -30,7 +29,6 @@ const Dashboard = ({
         <div style={{ background: '#fce8e6', padding: '15px', borderRadius: '8px', textAlign: 'center' }}><h3>{countByStatus('Declined')}</h3><small>Declined</small></div>
       </div>
 
-      {/* ➕ Application Input Fields Form */}
       <div style={{ background: '#fff', padding: '25px', borderRadius: '10px', border: '1px solid #e0e0e0', marginBottom: '30px' }}>
         <h3 style={{ marginTop: 0 }}>{editingId ? '⚠️ Edit Tracking Entry' : '➕ Record New Application Entry'}</h3>
         <form onSubmit={handleJobSubmit} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '15px' }}>
@@ -55,7 +53,6 @@ const Dashboard = ({
         </form>
       </div>
 
-      {/* 🔍 Dynamic Filters Header Row */}
       <div style={{ display: 'flex', gap: '15px', marginBottom: '20px' }}>
         <input type="text" placeholder="🔍 Search by company or position..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} style={{ flex: 2, padding: '12px', borderRadius: '6px', border: '1px solid #ccc', fontSize: '15px' }} />
         <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)} style={{ flex: 1, padding: '12px', borderRadius: '6px', border: '1px solid #ccc', background: '#fff' }}>
@@ -67,7 +64,6 @@ const Dashboard = ({
         </select>
       </div>
 
-      {/* 🗂️ Map Filtered Job Grid Cards */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
         {filteredJobs.map((job) => (
           <div key={job._id} style={{ padding: '20px', borderRadius: '10px', border: '1px solid #eee', background: '#fff', boxShadow: '0 4px 12px rgba(0,0,0,0.02)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
